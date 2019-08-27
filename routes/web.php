@@ -26,9 +26,12 @@ Route::get('logout/github', 'Auth\LogoutController@index');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('github', 'Github\GithubController@top');
-    Route::resource('photos', 'PhotoPostController');
  });
 
 Route::resource('home', 'PostsController', ['only' => ['index', 'create', 'store', 'show', 'destroy']]);
 
 Route::get('profile', 'ProfileController@index');
+
+Route::post('like', 'LikeController@likeTopost');
+Route::post('like/user', 'LikeController@userTolike');
+Route::post('like/delete', 'LikeController@likeTodelete');

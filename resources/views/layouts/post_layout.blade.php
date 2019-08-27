@@ -14,6 +14,10 @@
         <style type="text/css">
             .button_wrapper{
                 text-align:center;
+                display: inline-block;
+            }
+            .button_wrapper_{
+                display: inline-block;
             }
             .nav-link{
                 display: inline-block;
