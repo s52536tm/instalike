@@ -32,10 +32,10 @@ echo "uuuuuuuu";
 
         $now = date("Y/m/d H:i:s");
         $login_user_id = Auth::user()->github_id;
-        $posts_id = DB::table('posts')->where('picture', $_POST["post"])->value(latest('id')->first());
-        $users_id = DB::table('users')->where('github_id', $login_user_id)->value(latest('id')->first());
+        $posts_id = DB::table('posts')->where('picture', $_POST["post"])->value('id');
+        $users_id = DB::table('users')->where('github_id', $login_user_id)->max('id');
 
-        DB::delete('DELETE FROM public.likes WHERE posts_id? AND users_id=?', [$posts_id, $users_id]);
+        DB::delete('delete from public.likes where posts_id=? and users_id=?', [$posts_id, $users_id]);
         return redirect('home');
 
     }
