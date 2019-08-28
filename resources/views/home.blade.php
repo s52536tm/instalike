@@ -20,6 +20,7 @@
         @foreach ($files as $file)
             <div class="card" style="width: 50%;">
                 <?php
+                //var_dump($file);
                     $liked_flag = 0;
                     $app_user_id = DB::table('posts')->where('picture', $file)->value('github_id');
                     $app_user_name = DB::table('posts')->where('picture', $file)->value('github_name');
