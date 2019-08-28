@@ -25,7 +25,8 @@ class LikeController extends Controller
     }
 
     public function userTolike(){
-echo "uuuuuuuu";
+        $filename = $_POST["post"];
+        return view('profiles.likeuser', ['filename' => $filename]);
     }
 
     public function likeTodelete(){

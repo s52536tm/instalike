@@ -17,14 +17,33 @@
 
     <div class="cards">
         <?php 
+            $liked_count = 0;
+            $profile_user = $_GET["user"];
             $login_user_id = Auth::user()->github_id;
             $login_user_name = Auth::user()->github_name;
+            $users_id = DB::table('users')->where('github_id', $login_user_id)->max('id');
+            $liked_posts = DB::select('select posts_id from public.likes');
+            for($i = 0; ; $i++){
+                if(empty($liked_posts[$i]->posts_id)){
+                    break;
+                }else{
+                    //var_dump($liked_posts[$i]->posts_id);
+                    $be_liked_id = DB::table('posts')->where('id', $liked_posts[$i]->posts_id)->value('github_id');
+                    if($be_liked_id == $login_user_id){
+                        $liked_count = $liked_count + 1;
+                    }
+                }
+            }
         ?>
         <div class="card" style="width: 24%;">
-            <img class="card-img-top" src="https://github.com/{{"${login_user_name}"}}.png" style="height: auto;">
+            <img class="card-img-top" src="https://github.com/{{"${profile_user}"}}.png" style="height: auto;">
         </div>
         
-        <?php echo $login_user_name."<br />"; ?>
+        <?php
+            echo "username：".$login_user_name;
+            echo " / totallike：".$liked_count."<br />";
+        
+        ?>
         @foreach ($files as $file)
             <div class="card" style="width: 24%;">
                 <?php

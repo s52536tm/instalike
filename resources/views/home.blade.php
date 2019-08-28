@@ -24,7 +24,7 @@
                     $app_user_id = DB::table('posts')->where('picture', $file)->value('github_id');
                     $app_user_name = DB::table('posts')->where('picture', $file)->value('github_name');
                 ?>
-                <a href="/profile"><?php echo $app_user_name ?></a>
+                <a href="/profile?user={{"${app_user_name}"}}"><?php echo $app_user_name ?></a>
                 <img class="card-img-top" src="http://192.168.55.44:9000/instalike/{{"${file}"}}" style="height: auto;">
                 <?php
                     $app_caption = DB::table('posts')->where('picture', $file)->value('caption');
@@ -43,9 +43,28 @@
                             </form>
 
                 <?php 
+                        $login_user_id = Auth::user()->github_id;
+                        $login_user_name = Auth::user()->github_name;
+                        $users_id = DB::table('users')->where('github_id', $login_user_id)->max('id');
+                        $liked_users = DB::select('select users_id from public.likes');
+                        for($i = 0; ; $i++){
+                            if(empty($liked_users[$i]->users_id)){
+                                break;
+                            }else{
+                                //var_dump($liked_posts[$i]->posts_id);
+                                $liked_id = DB::table('users')->where('id', $liked_users[$i]->users_id)->value('github_id');
+                                $liked_name = DB::table('users')->where('id', $liked_users[$i]->users_id)->value('github_name');
+                                if(($liked_id == $login_user_id) & ($liked_name == $login_user_name)){
+                                    DB::table('likes')->where('users_id', $liked_users[$i]->users_id)->update(['users_id' => $users_id]);
+                                    //DB::updata('updata public.likes set users_id = ? WHERE users_id = ?', [$users_id, $liked_users[$i]->users_id]);
+                                }
+                            }
+                        }
+
                         $posts_id = DB::table('posts')->where('picture', $file)->value('id');
                         $users_id = DB::table('users')->where('github_id', $login_user_id)->max('id');
                         $liked_flag = DB::select('select count(*) from public.likes where posts_id = ? and users_id = ?', [$posts_id, $users_id]);
+
                         //echo $posts_id."<br />";
                         //echo $users_id."<br />";
                         //var_dump ($liked_flag[0]->count)."<br />";
