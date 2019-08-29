@@ -35,3 +35,7 @@ Route::get('profile', 'ProfileController@index');
 Route::post('like', 'LikeController@likeTopost');
 Route::post('like/user', 'LikeController@userTolike');
 Route::post('like/delete', 'LikeController@likeTodelete');
+
+Route::get('/test', function () {
+    return view('test');
+});

@@ -22,9 +22,6 @@
             .nav-link{
                 display: inline-block;
             }
-            body{
-                width:480px;
-            }
             div{
                 max-width: 100%;
                 margin: 0 auto;

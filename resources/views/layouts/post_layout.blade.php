@@ -26,6 +26,10 @@
                 max-width: 100%;
                 margin: 0 auto;
             }
+            .cards .card {
+                vertical-align: top;
+                display: inline-block;
+            }
 
         </style>
     </head>

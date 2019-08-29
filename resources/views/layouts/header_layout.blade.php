@@ -12,9 +12,6 @@
         >
 
         <style type="text/css">
-            body{
-                width:480px;
-            }
             .button_wrapper{
                 text-align:center;
             }
@@ -28,6 +25,23 @@
             
         </style>
     </head>
+
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var clickFlg = true;
+        jQuery(function($) {
+            $(".nav-link").on("click", function() {
+                if(clickFlg) {
+                    // イベント処理中はフラグをoffにします。
+                    clickFlg = false;
+                    // クリック処理を実施
+                } else {
+                    // イベント処理中は処理しない
+                    return false;
+                }
+            });
+        });
+    </script>
 
     <body>
         <header class="navbar navbar-expand-lg navbar-dark bg-dark">

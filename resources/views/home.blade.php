@@ -10,15 +10,27 @@
 
         <title>ホーム画面</title>
     </head>
-    <body>
-
-        
-    </body>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script>
+            var clickFlg = true;
+            jQuery(function($) {
+                $(".btn").on("click", function() {
+                    if(clickFlg) {
+                        // イベント処理中はフラグをoffにします。
+                        clickFlg = false;
+                        // クリック処理を実施
+                    } else {
+                        // イベント処理中は処理しない
+                        return false;
+                    }
+                });
+            });
+        </script>
 
     <div class="cards">
     @auth
         @foreach ($files as $file)
-            <div class="card" style="width: 50%;">
+            <div class="card" style="width: 24%;">
                 <?php
                 //var_dump($file);
                     $liked_flag = 0;

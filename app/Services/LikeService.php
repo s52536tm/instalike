@@ -11,7 +11,6 @@ class LikeService
     private $like_repository;
     private $user_repository;
     
-    
     public function __construct(LikeRepository $like_repository, UserRepository $user_repository)
     {
         $this->like_repository = $like_repository;
