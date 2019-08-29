@@ -8,6 +8,13 @@ use App\Model\Like;
 
 class LikeRepository
 {
+    public function getLikeid()
+    {   
+        $res_liked_user = DB::select('select users_id from public.likes');
+        return ($res_liked_user);
+    }
+
+ 
 
     public function getLike(array $params)
     {   

@@ -9,6 +9,26 @@ use App\Model\Post;
 
 class PostRepository
 {
+    public function getPost_userid($filename)
+    {
+        $res_user_id = DB::table('posts')->where('picture', $filename)->value('github_id');
+        return ($res_user_id);
+    }
+
+    public function getPost_username($filename)
+    {
+        $res_user_name = DB::table('posts')->where('picture', $filename)->value('github_name');
+        return ($res_user_name);
+    }
+
+    public function getPost_caption($filename)
+    {
+        $res_caption = DB::table('posts')->where('picture', $filename)->value('caption');
+        return ($res_caption);
+    }
+
+
+    
 
     public function getPost()
     {

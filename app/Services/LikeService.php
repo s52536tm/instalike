@@ -30,6 +30,12 @@ class LikeService
 
     }
 
+    public function To_getLikeid()
+    {
+        $res_liked_user = $this->like_repository->getLikeid();
+        return ($res_liked_user);
+    }
+
     public function show($filename)
     {
         $disk = Storage::disk('s3');

@@ -17,6 +17,36 @@ class PostService
         $this->post_repository = $post_repository;
         $this->user_repository = $user_repository;
     }
+
+    public function To_getUserInfo()
+    {
+        $res_userinfo = $this->user_repository->getUserInfo();
+        return ($res_userinfo);
+    }
+
+    public function To_getUserid($login_user_id)
+    {
+        $res_user_id = $this->user_repository->getUserid($login_user_id);
+        return ($res_user_id);
+    }
+
+    public function To_getPost_userid($filename)
+    {
+        $res_user_id = $this->post_repository->getPost_userid($filename);
+        return ($res_user_id);
+    }
+
+    public function To_getPost_username($filename)
+    {
+        $res_user_name = $this->post_repository->getPost_username($filename);
+        return ($res_user_name);
+    }
+
+    public function To_getPost_caption($filename)
+    {
+        $res_caption = $this->post_repository->getPost_caption($filename);
+        return ($res_caption);
+    }
     
     public function To_getPost()
     {
@@ -33,8 +63,6 @@ class PostService
         }
         return ($post);
     }
-
-
 
     public function To_store(array $params)
     {
