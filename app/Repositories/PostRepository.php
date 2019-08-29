@@ -18,9 +18,7 @@ class PostRepository
 
     public function insertPost(array $params)
     {
-        //var_dump($params);
         Post::create($params);
-        //DB::insert('insert into public.posts (picture, caption, github_id, github_name, updated_at) values (?, ?, ?, ?, ?)', [$filename, $_POST["caption"], $user_id, $user_name, $now]);
         return ('');
     }
 

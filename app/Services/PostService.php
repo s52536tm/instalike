@@ -45,12 +45,10 @@ class PostService
 
         $filename = $file->hashName();
         $res_userinfo = $this->user_repository->getUserInfo();
-        //var_dump($res_userinfo);
         $user_id = $res_userinfo->github_id;
         $user_name = $res_userinfo->github_name;
-        $now = date("Y/m/d H:i:s");
 
-        $params = $params + array('picture' => $filename, 'caption' => $_POST['caption'], 'github_id' => $user_id, 'github_name' => $user_name, $now);
+        $params = $params + array('picture' => $filename, 'caption' => $_POST['caption'], 'github_id' => $user_id, 'github_name' => $user_name);
         $res_insert = $this->post_repository->insertPost($params);
         return ('');
 
