@@ -24,6 +24,16 @@
                         return false;
                     }
                 });
+                $(".link").on("click", function() {
+                    if(clickFlg) {
+                        // イベント処理中はフラグをoffにします。
+                        clickFlg = false;
+                        // クリック処理を実施
+                    } else {
+                        // イベント処理中は処理しない
+                        return false;
+                    }
+                });
             });
         </script>
 
@@ -37,7 +47,7 @@
                     $app_user_id = DB::table('posts')->where('picture', $file)->value('github_id');
                     $app_user_name = DB::table('posts')->where('picture', $file)->value('github_name');
                 ?>
-                <a href="/profile?user={{"${app_user_name}"}}"><?php echo $app_user_name ?></a>
+                <a href="/profile?user={{"${app_user_name}"}}" class='link'><?php echo $app_user_name ?></a>
                 <img class="card-img-top" src="http://192.168.55.44:9000/instalike/{{"${file}"}}" style="height: auto;">
                 <?php
                     $app_caption = DB::table('posts')->where('picture', $file)->value('caption');
