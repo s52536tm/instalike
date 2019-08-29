@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Model\User;
 use App\Model\Post;
 
-class PostRepository
+class UserRepository
 {
     public function getUserInfo(){
         $res_userinfo = Auth::user();

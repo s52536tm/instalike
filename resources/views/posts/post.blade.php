@@ -4,7 +4,7 @@
 @section('content')
     <h2>画像のアップロード</h2><br>
 
-    <form method="post" action="{{ action('PostsController@store') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ action('PostController@store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
 
     <div class="button_wrapper">

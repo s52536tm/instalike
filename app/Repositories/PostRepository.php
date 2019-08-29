@@ -16,11 +16,6 @@ class PostRepository
         return ($res_picture);
     }
 
-    public function getUserInfo(){
-        $res_userinfo = Auth::user();
-        return ($res_userinfo);
-    }
-
     public function insertPost(array $params)
     {
         //var_dump($params);

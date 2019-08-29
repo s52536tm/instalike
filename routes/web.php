@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('github', 'Github\GithubController@top');
  });
 
-Route::resource('home', 'PostsController', ['only' => ['index', 'create', 'store', 'show', 'destroy']]);
+Route::resource('home', 'PostController', ['only' => ['index', 'create', 'store', 'show', 'destroy']]);
 
 Route::get('profile', 'ProfileController@index');
 

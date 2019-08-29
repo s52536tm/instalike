@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Model\User;
 
-class PostsController extends Controller
+class PostController extends Controller
 {
     private $post_service;
     

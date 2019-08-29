@@ -3,15 +3,19 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Storage;
 use App\Repositories\PostRepository;
+use App\Repositories\UserRepository;
 
 class PostService
 {
 
     private $post_repository;
+    private $user_repository;
     
-    public function __construct(PostRepository $post_repository)
+    
+    public function __construct(PostRepository $post_repository, UserRepository $user_repository)
     {
         $this->post_repository = $post_repository;
+        $this->user_repository = $user_repository;
     }
     
     public function To_getPost()
@@ -40,7 +44,7 @@ class PostService
         $disk->put($file->hashName(), $fileContents, 'public');
 
         $filename = $file->hashName();
-        $res_userinfo = $this->post_repository->getUserInfo();
+        $res_userinfo = $this->user_repository->getUserInfo();
         //var_dump($res_userinfo);
         $user_id = $res_userinfo->github_id;
         $user_name = $res_userinfo->github_name;
@@ -69,7 +73,7 @@ class PostService
         $disk = Storage::disk('s3');
         $disk->delete($filename);
 
-        $res_userinfo = $this->post_repository->getUserInfo();
+        $res_userinfo = $this->user_repository->getUserInfo();
         $user_id = $res_userinfo->github_id;
         $user_name = $res_userinfo->github_name;
         $res_delete = $this->post_repository->deletePost($filename, $user_id, $user_name);
