@@ -24,10 +24,40 @@ class PostService
         return ($res_userinfo);
     }
 
+    public function To_getPostsid($filename)
+    {
+        $res_posts_id = $this->post_repository->getPostsid($filename);
+        return ($res_posts_id);
+    }
+
+    public function To_getUsersid($login_user_id)
+    {
+        $res_users_id = $this->user_repository->getUsersid($login_user_id);
+        return ($res_users_id);
+    }
+
     public function To_getUserid($login_user_id)
     {
         $res_user_id = $this->user_repository->getUserid($login_user_id);
         return ($res_user_id);
+    }
+
+    public function To_getLike_Usersid($liked_users)
+    {
+        $res_user_name = $this->user_repository->getLike_Usersid($liked_users);
+        return ($res_user_name);
+    }
+
+    public function To_getUsername($profile_user_name)
+    {
+        $res_user_name = $this->user_repository->getUsername($profile_user_name);
+        return ($res_user_name);
+    }
+
+    public function To_getlikedUserInfo($liked_user_id,$value)
+    {
+        $res_liked_userinfo = $this->user_repository->getlikedUserInfo($liked_user_id,$value);
+        return ($res_liked_userinfo);
     }
 
     public function To_getPost_userid($filename)
@@ -40,6 +70,15 @@ class PostService
     {
         $res_user_name = $this->post_repository->getPost_username($filename);
         return ($res_user_name);
+    }
+
+    public function To_getPost_likeduser($liked_posts_id, $profile_user, $liked_count)
+    {
+        $res_liked_user_name = $this->post_repository->getPost_likeduser($liked_posts_id);
+        if($res_liked_user_name == $profile_user){
+            $liked_count = $liked_count + 1;
+        }
+        return ($liked_count);
     }
 
     public function To_getPost_caption($filename)

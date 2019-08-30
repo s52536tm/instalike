@@ -9,6 +9,12 @@ use App\Model\Post;
 
 class PostRepository
 {
+    public function getPostsid($filename)
+    {
+        $res_posts_id = DB::table('posts')->where('picture', $filename)->value('id');
+        return ($res_posts_id);
+    }
+
     public function getPost_userid($filename)
     {
         $res_user_id = DB::table('posts')->where('picture', $filename)->value('github_id');
@@ -19,6 +25,12 @@ class PostRepository
     {
         $res_user_name = DB::table('posts')->where('picture', $filename)->value('github_name');
         return ($res_user_name);
+    }
+
+    public function getPost_likeduser($liked_posts_id)
+    {
+        $res_liked_user_name =  DB::table('posts')->where('id', $liked_posts_id)->value('github_name');
+        return ($res_liked_user_name);
     }
 
     public function getPost_caption($filename)

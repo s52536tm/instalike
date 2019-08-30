@@ -32,9 +32,9 @@
             $liked_count = 0;
             //$filename = $_POST["post"]
             //echo $filename;
-            $posts_id = DB::table('posts')->where('picture', $filename)->value('id');
-            $liked_users = DB::table('likes')->where('posts_id', $posts_id)->value('users_id');
-            $user_name = DB::table('users')->where('id', $liked_users)->value('github_name');
+            //$posts_id = DB::table('posts')->where('picture', $filename)->value('id');
+            //$liked_users = DB::table('likes')->where('posts_id', $posts_id)->value('users_id');
+            //$user_name = DB::table('users')->where('id', $liked_users)->value('github_name');
 
             if(!empty($user_name)):
 
