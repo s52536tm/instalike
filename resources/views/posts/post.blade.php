@@ -42,6 +42,12 @@
             });
         </script>
 
+        <?php
+            if(!empty($error)){
+                echo $error;
+            }
+        ?>
+
     <form method="post" action="{{ action('PostController@store') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
 
